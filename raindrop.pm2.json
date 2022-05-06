@@ -1,0 +1,7 @@
+{
+  "name": "raindrop",
+  "script": "server.js",
+  "node_args": ["--inspect"],
+  "watch": true,
+  "ignore_watch": ["test"]
+}
