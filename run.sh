@@ -9,5 +9,5 @@ export EMP_FRONTEND_URL=https://mtc.localhost
 unset http_proxy;
 unset https_proxy;
 unset ALL_PROXY;
-pm2 start raindrop.pm2.json
+pm2 start pm2.json
 pm2 logs
