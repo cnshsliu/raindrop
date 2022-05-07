@@ -8,7 +8,7 @@ import { isMainThread } from "worker_threads";
  */
 //use mongoose as the ORM
 import Mongoose, { ConnectOptions } from "mongoose";
-import RaindropConfig from "../../secret/raindrop_keep_secret";
+import RaindropConfig from "../secret/keep_secret";
 
 /**
  * ## Default the connection string to the development envionment

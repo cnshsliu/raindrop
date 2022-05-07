@@ -12,7 +12,7 @@
  * ## Imports
  *
  */
-import RaindropConfig from "../../secret/raindrop_keep_secret";
+import RaindropConfig from "../secret/keep_secret";
 //the authentication package
 import Jwt from "jsonwebtoken";
 import redisClient from "../database/redis";

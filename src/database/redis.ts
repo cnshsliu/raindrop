@@ -1,6 +1,6 @@
 "use strict";
 import Redis from "redis";
-import RaindropConfig from "../../secret/raindrop_keep_secret";
+import RaindropConfig from "../secret/keep_secret";
 
 /**
  *

@@ -1,6 +1,6 @@
 "use strict";
 
-import RaindropConfig from "../../secret/raindrop_keep_secret";
+import RaindropConfig from "../secret/keep_secret";
 import { Server, Request, ResponseObject, ResponseToolkit } from "@hapi/hapi";
 import JasonWebToken from "jsonwebtoken";
 import JwtAuth from "../auth/jwt-strategy";
