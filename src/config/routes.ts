@@ -1,5 +1,5 @@
 "use strict";
-const GeneralRoutes = require("../routes/general/endpoints");
+import GeneralRoutes from "../routes/general/endpoints";
 //Restricted route to prove authentication & authorization
 //const RestrictedRoutes = require("../routes/restricted/endpoints");
 //const AccountRoutes = require("../routes/account/endpoints");
