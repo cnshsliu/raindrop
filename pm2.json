@@ -2,7 +2,7 @@
   "name": "raindrop",
   "script": "./build/index.js",
   "node_args": ["--inspect"],
-  "watch": true,
+  "watch": ["build"],
   "ignore_watch": ["test"],
   "interpreter": "node",
   "env": {
