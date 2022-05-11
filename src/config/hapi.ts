@@ -9,10 +9,8 @@ import Views from "./views";
 
 import Good from "@hapi/good";
 import hapiAuthJwt from "hapi-auth-jwt2";
-import hapiAuthBasic from "@hapi/basic";
-//import Inert from "@hapi/inert";
-//import Vision from "@hapi/vision";
-//import HapiSwagger from "hapi-swagger";
+import hapiAuthWishHouse from "hapi-auth-wishhouse";
+import WishHouseAuthStrategy from "../auth/wishhouse-strategy";
 
 const theHapiServer = {
   server_initialized: false,
@@ -63,41 +61,18 @@ const theHapiServer = {
   register_authJwt: async () => {
     await theHapiServer.server.register({ plugin: hapiAuthJwt });
   },
-  register_authBasic: async () => {
-    await theHapiServer.server.register({ plugin: hapiAuthBasic });
-
-    theHapiServer.server.auth.strategy("basic", "basic", {
-      validate: async (request, username, password, h) => {
-        let isValid = false;
-        let credentials = null;
-        if (username === "foo" && password === "bar") {
-          isValid = true;
-          credentials = { username };
-        }
-        return { isValid, credentials };
-      },
-    });
+  register_authWishHouse: async () => {
+    await theHapiServer.server.register({ plugin: hapiAuthWishHouse });
+    await theHapiServer.server.register({ plugin: WishHouseAuthStrategy });
   },
-  /* register_swagger: async () => {
-    await theHapiServer.server.register([
-      Inert,
-      Vision,
-      { plugin: HapiSwagger, options: }, {
-        info: {
-          title: "HyperFlow API Documentation",
-          version: "2.0",
-        },
-      }
-    ]);
-  }, */
+
   starter: async () => {
     if (theHapiServer.server_initialized) {
       return theHapiServer.server;
     }
     await theHapiServer.register_Good();
     await theHapiServer.register_authJwt();
-    await theHapiServer.register_authBasic();
-    //await register_swagger();
+    await theHapiServer.register_authWishHouse();
 
     await JwtAuth.setJwtStrategy(theHapiServer.server);
     await Routes.init(theHapiServer.server);
@@ -133,8 +108,7 @@ const theHapiServer = {
     }
     await theHapiServer.register_Good();
     await theHapiServer.register_authJwt();
-    await theHapiServer.register_authBasic();
-    //await register_swagger();
+    await theHapiServer.register_authWishHouse();
 
     await JwtAuth.setJwtStrategy(theHapiServer.server);
     await Views.init(theHapiServer.server);

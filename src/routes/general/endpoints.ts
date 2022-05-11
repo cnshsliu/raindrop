@@ -9,6 +9,7 @@
  * ## Imports
  *
  */
+import Joi from "joi";
 import Handlers from "./handlers";
 /**
  * ## endpoints
@@ -45,6 +46,22 @@ let internals = {
         description: "Show the environment variables.",
         notes: "Renders the variables known to the server",
         tags: ["api"],
+      },
+    },
+    {
+      method: "POST",
+      path: "/testwhauth",
+      handler: Handlers.TestWishhouseAuth,
+      config: {
+        description: "Test WishHouse Authentication",
+        tags: ["api"],
+        auth: "wh",
+        validate: {
+          headers: Joi.object({
+            Authorization: Joi.string(),
+          }).unknown(),
+          validator: Joi,
+        },
       },
     },
   ],

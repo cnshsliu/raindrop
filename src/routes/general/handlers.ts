@@ -42,6 +42,16 @@ const internals = {
       "</body>\n</html>"
     );
   },
+  TestWishhouseAuth: async (req, h) => {
+    try {
+      return h.response(
+        "If echo '陈高阳',it run well, the echo is:" + req.auth.credentials.username
+      );
+    } catch (err) {
+      console.error(err);
+      return h.response(err.message);
+    }
+  },
 };
 
 export default internals;
